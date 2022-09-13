@@ -1,0 +1,11 @@
+&share
+source_grid_template_file      = '/glade/scratch/schwartz/MPAS/15km_mesh/mpas_init/2019042700/init.nc'
+destination_grid_template_file = '/glade/scratch/schwartz/MPAS/30km_mesh/mpas_init/2019042700/init.nc'
+file_to_interpolate = '/glade/scratch/schwartz/MPAS/15km_mesh/jedi_test1/2019051900/jedi_ens_mean/mpasout.2019-05-19_00.00.00.nc'
+output_file = './pony.nc'
+weight_file = './weights.dat'
+netcdf_output_type = 'cdf5'
+print_before_and_after_interp_values = .true.
+do_vertical_interpolation = .true.
+variables_to_copy_from_destination_file = 'rho_base','theta_base','isice_lu','iswater_lu','sst','vegfra','seaice','xice','xland','dzs','ter'
+/
