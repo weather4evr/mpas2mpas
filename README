@@ -13,7 +13,7 @@ Compiling instructions:
 To run (serial code):
 ./mpas2mpas.exe
 
-Input/namelist:
+Input/namelist (In file namelist.input):
 
 &share
 source_grid_template_file      = './source_grid_init.nc'
