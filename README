@@ -28,13 +28,19 @@ variables_to_copy_from_destination_file = 'rho_base','theta_base','isice_lu','is
 /
 
 source_grid_template_file: Any file that has grid information for the SOURCE grid.  Easiest to have this be an "init.nc" file.
+
 destination_grid_template_file:  Any file that has grid information for the DESTINATION grid.  Easiest to have this be an "init.nc" file.
+
 file_to_interpolate : The file with data that you want to interpolate. Grid should be the same as in source_grid_template_file.
+
 output_file : Name of the output file with data from file_to_interpolate interpolated onto the destination grid defined by destination_grid_template_file.
+
 netcdf_output_type : Type of NETCDF file that will be output with interpolated data. Options are 'cdf5', 'netcdf4', 'classic'.  Either 'netcdf4' or 'cdf5' recommended.  PNETCDF is needed for 'cdf5'.
+
 weight_file : Name of a binary file that will contain interpolation weights to do the barcyentric interpolation from the source grid to the destination grid.  If not there, it will be created.  If there, it will be read-in, which will save computing time.
+
 print_before_and_after_interp_values : If true, for each interpolated variable, print the min/max at each vertical level before and after interpolation.
+
 do_vertical_interpolation : If true, do a linear interpolation in the vertical to match the destination grid's vertical structure.  Seems to work okay, but near the ground at certain points the pressure will be the same at model levels 1 and 2, which will give an error message at MPAS initialization.  When this variable is false, there are instability issues during the first few time steps due to the vertical grid mismatch (very large maximum vertical velocities), but these resolve themselves quickly.  Not sure whether it is best to keep this variable true or false.  Only has an appreciable impact near mountains.
+
 variables_to_copy_from_destination_file : There are some variables that you do NOT want to interpolate because MPAS won't run with the interpolated fields in the initial conditions.  Most important are the base-state fields, which are defined on each mesh and aren't compatible across meshes.  At the very least, this variable should contain these 4 fields: 'rho_base','theta_base','ter','xland' 
-
-
